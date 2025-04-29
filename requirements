@@ -1,4 +1,5 @@
-numpy
 pandas
+openpyxl
 streamlit
 scikit-learn
+numpy
