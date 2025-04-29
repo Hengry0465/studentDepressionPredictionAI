@@ -26,7 +26,7 @@ work_study_hours = st.slider('Work/Study Hours', 0, 12)
 overall_stress = st.slider('Overall Stress (0-9)', 0, 9)
 
 # Predict button
-if st.button('Predict Depression'):
+if st.button('Predict'):
     input_data = np.array([[age, study_satisfaction, dietary_habits, suicidal_thoughts, work_study_hours, overall_stress]])
     prediction = logistic_model.predict(input_data)
 
