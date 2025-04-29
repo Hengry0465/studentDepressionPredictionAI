@@ -5,11 +5,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 # Load training dataset from Excel
-train_data = pd.read_excel('logistic_train_data.xls')
+train_data = pd.read_csv('logistic_train_data.csv')
 
 # Separate features and target variable
-X_train = train_data.drop(columns=['target'])  # Assuming 'target' is the column name for labels
-y_train = train_data['target']
+X_train = train_data.drop(columns=['depression'])  # Assuming 'target' is the column name for labels
+y_train = train_data['depression']
 
 # Train Logistic Regression model
 logistic_model = LogisticRegression(random_state=42)
