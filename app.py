@@ -1,9 +1,10 @@
 import streamlit as st
 import numpy as np
 import os
+import pickle
 
-# Load model locally
-#logistic_model = joblib.load('logistic_model.joblib')  # <-- joblib load
+with open('logistic_model.pkl', 'rb') as file:
+    logistic_model = pickle.load(file)
 
 st.title("Depression Prediction App")
 
