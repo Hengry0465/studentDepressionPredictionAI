@@ -1,14 +1,23 @@
 import streamlit as st
 import numpy as np
-import os
-import pickle
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
-with open('logistic_model.pkl', 'rb') as file:
-    logistic_model = pickle.load(file)
+# Load training dataset from Excel
+train_data = pd.read_excel('logistic_train_data.xls')
+
+# Separate features and target variable
+X_train = train_data.drop(columns=['target'])  # Assuming 'target' is the column name for labels
+y_train = train_data['target']
+
+# Train Logistic Regression model
+logistic_model = LogisticRegression(random_state=42)
+logistic_model.fit(X_train, y_train)
 
 st.title("Depression Prediction App")
 
-# Input fields
+# Input fields for user input
 age = st.number_input('Age', min_value=18, max_value=34)
 study_satisfaction = st.slider('Study Satisfaction (0-5)', 0, 5)
 dietary_habits = st.slider('Dietary Habits (0-3)', 0, 3)
@@ -24,4 +33,4 @@ if st.button('Predict Depression'):
     if prediction[0] == 1:
         st.error('Prediction: Depression')
     else:
-        st.success('Prediction: No Depression')
+        st.success('Prediction: No Depression')
